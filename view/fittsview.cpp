@@ -97,7 +97,9 @@ void FittsView::initWindows() {
 
     aValue = new QDoubleSpinBox;
     aValue->setValue(this->fittsModel->a);
-    aValue->setMinimumHeight(30);
+    //aValue->setMinimumHeight(30); //
+    //aValue->setStyleSheet("QDoubleSpinBox {   min-width: 200px; min-height: 200px; }");
+    //aValue->
     rappelRightLayout->addWidget(aValue,1,1);
 
 
@@ -139,9 +141,18 @@ void FittsView::initWindows() {
     leaveBtn->setMinimumHeight(50); //
     btnLayout->addWidget(leaveBtn);
 
+
+
     startBtn = new QPushButton("Démarrer");
-    startBtn->setMinimumHeight(50); //
-    startBtn->setStyleSheet("QPushButton { background-color: blue; }");
+    //startBtn->setMinimumHeight(50); //
+    startBtn->setStyleSheet("QPushButton { background-color: #339DFF; min-height: 50px;}");
+
+/*
+    QPalette palette = startBtn->palette();
+    palette.setColor(QPalette::Background, QColor("#339DFF"));
+    startBtn->setPalette(palette);
+
+*/
     btnLayout->addWidget(startBtn);
 
 
@@ -229,7 +240,7 @@ void FittsView::initWindows() {
 }
 
 void FittsView::updateTestMsg() {
-    this->testLabel->setText("<strong>Le test commencera après avoir appuyé sur la cible <font color='cyan'>bleue</font>.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
+    this->testLabel->setText("<strong>Le test commencera après avoir appuyé sur la cible <font color='#339DFF'>bleue</font>.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
 }
 
 
