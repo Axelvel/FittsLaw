@@ -17,6 +17,7 @@
 #include <QChart>
 #include <QPolarChart>
 #include <QLineSeries>
+#include <QImage>
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -68,7 +69,7 @@ void FittsView::initWindows() {
 
     label = new QLabel("Programme pour vérifier la loi Fitts");
     label->setAlignment(Qt::AlignCenter);
-    label->setFont(QFont("Arial",20));
+    label->setFont(QFont("Arial",30));
     settingsLayout->addWidget(label);
 
 
@@ -82,9 +83,18 @@ void FittsView::initWindows() {
     label = new QLabel("Formule utilisée:");
     rappelLeftLayout->addWidget(label);
 
+
     label = new QLabel;
-    label->setPixmap(QPixmap("./data/formule.png").scaled(200,100,Qt::KeepAspectRatio)); //TODO: Add png and fix path
+    label->setPixmap(QPixmap(":/data/formule.png").scaled(200,100,Qt::KeepAspectRatio));
     rappelLeftLayout->addWidget(label);
+
+
+
+
+
+
+
+
 
     QGridLayout *rappelRightLayout = new QGridLayout();
     rappelLayout->addLayout(rappelRightLayout,1);
@@ -119,7 +129,8 @@ void FittsView::initWindows() {
 
     nbCible = new QSpinBox;
     nbCible->setValue(this->fittsModel->nbCible);
-    nbCible->setMinimumSize(QSize(100,30)); //
+    //nbCible->setMinimumSize(QSize(100,30)); //
+    nbCible->setMinimumWidth(10);
     nbCible->setMaximum(100);
     configLayout->addWidget(nbCible,1,1);
 
