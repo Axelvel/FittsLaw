@@ -39,6 +39,8 @@ private:
     QPushButton *resultBtn;
     QPushButton *resultLeaveBtn;
     QPushButton *restartBtn;
+    QPushButton *quitButton;
+    QPushButton *escapeButton;
 
     QDoubleSpinBox *aValue;
     QDoubleSpinBox *bValue;
@@ -56,8 +58,12 @@ private:
     QLabel *erreurType;
     QLabel *diffMoy;
     QLabel *itc95;
+    QLabel *quitLabel;
 
     QChartView *plot;
+
+    QWidget *quitWindow;
+    QWidget *mainWidget;
 
     friend FittsController;
 };

@@ -27,13 +27,15 @@ FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
     this->fittsController = new FittsController(this, this->fittsModel);
 
     // Btn clicked
-    connect(leaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
+    connect(leaveBtn,SIGNAL(clicked()),fittsController,SLOT(showQuitWindow()));
     connect(startBtn,SIGNAL(clicked()),fittsController,SLOT(startSimulation()));
+    connect(quitButton,SIGNAL(clicked()),fittsController,SLOT(quit()));
+    connect(escapeButton,SIGNAL(clicked()),fittsController,SLOT(escape()));
 
     connect(backBtn,SIGNAL(clicked()),fittsController,SLOT(backToSettings()));
     connect(resultBtn,SIGNAL(clicked()),fittsController,SLOT(resultClicked()));
 
-    connect(resultLeaveBtn,SIGNAL(clicked()),fittsController,SLOT(quit()));
+    connect(resultLeaveBtn,SIGNAL(clicked()),fittsController,SLOT(showQuitWindow()));
     connect(restartBtn,SIGNAL(clicked()),fittsController,SLOT(backToSettings()));
 
     connect(graphicView, SIGNAL(mouseClicked(int,int)), fittsController, SLOT(cibleClicked(int,int)));
@@ -50,7 +52,7 @@ FittsView::~FittsView() {}
 
 void FittsView::initWindows() {
 
-    QWidget *mainWidget = new QWidget;
+    mainWidget = new QWidget;
     this->setCentralWidget(mainWidget);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -138,7 +140,8 @@ void FittsView::initWindows() {
     settingsLayout->addLayout(btnLayout);
 
     leaveBtn = new QPushButton("Quitter");
-    leaveBtn->setMinimumHeight(50); //
+    leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; min-height: 50px;}");
+    //leaveBtn->setMinimumHeight(50);
     btnLayout->addWidget(leaveBtn);
 
 
@@ -151,7 +154,6 @@ void FittsView::initWindows() {
     QPalette palette = startBtn->palette();
     palette.setColor(QPalette::Background, QColor("#339DFF"));
     startBtn->setPalette(palette);
-
 */
     btnLayout->addWidget(startBtn);
 
@@ -237,6 +239,21 @@ void FittsView::initWindows() {
     restartBtn = new QPushButton("Recommencer");
     restartBtn->setMinimumHeight(50);
     btnLayout->addWidget(restartBtn);
+
+    quitWindow = new QWidget;
+
+    QVBoxLayout *quitLayout = new QVBoxLayout(quitWindow);
+
+    quitLabel = new QLabel("Ceci fermera l'application, êtes vous sûr de vouloir quitter l'application ?");
+    quitLayout->addWidget(quitLabel);
+
+    quitButton = new QPushButton("Quitter");
+    quitButton->setMinimumHeight(50);
+    quitLayout->addWidget(quitButton);
+
+    escapeButton = new QPushButton("Annuler");
+    escapeButton->setMinimumHeight(50);
+    quitLayout->addWidget(escapeButton);
 }
 
 void FittsView::updateTestMsg() {

@@ -40,6 +40,9 @@ private slots:
     void maxSizeChanged(int value);
 
     void cibleClicked(int x, int y);
+
+    void showQuitWindow();
+    void escape();
 };
 
 #endif // FITTSCONTROLLER_H
