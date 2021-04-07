@@ -234,3 +234,13 @@ void FittsController::calculateResult() {
 
     this->fittsView->displayResults();
 }
+
+void FittsController::showQuitWindow(){
+    this->fittsView->quitWindow->show();
+    this->fittsView->mainWidget->hide();
+}
+
+void FittsController::escape(){
+    this->fittsView->quitWindow->hide();
+    this->fittsView->mainWidget->show();
+}
