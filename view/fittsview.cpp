@@ -79,6 +79,8 @@ void FittsView::initWindows() {
     settingsLayout->addWidget(rappelBox);
     QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
 
+    rappelBox->setStyleSheet("font-size: 15px");
+
     QVBoxLayout *rappelLeftLayout = new QVBoxLayout();
     rappelLayout->addLayout(rappelLeftLayout,2);
 
@@ -99,6 +101,7 @@ void FittsView::initWindows() {
 
 
     QGridLayout *rappelRightLayout = new QGridLayout();
+
     rappelLayout->addLayout(rappelRightLayout,1);
 
     label = new QLabel("Choix de a et b");
@@ -125,6 +128,8 @@ void FittsView::initWindows() {
     settingsLayout->addWidget(configBox);
     QGridLayout *configLayout = new QGridLayout(configBox);
 
+    configBox->setStyleSheet("font-size: 15px"); //
+
     configLayout->addWidget(new QLabel("Nombre de cibles:"),1,0);
     configLayout->addWidget(new QLabel("Taille minimum cible:"),2,0);
     configLayout->addWidget(new QLabel("Taille maximal cible:"),3,0);
@@ -147,11 +152,13 @@ void FittsView::initWindows() {
     configLayout->addWidget(maxSize,3,1);
 
 
+
+
     QHBoxLayout *btnLayout = new QHBoxLayout;
     settingsLayout->addLayout(btnLayout);
 
     leaveBtn = new QPushButton("Quitter");
-    leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; min-height: 50px;}");
+    leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px}");
     //leaveBtn->setMinimumHeight(50);
     btnLayout->addWidget(leaveBtn);
 
@@ -159,7 +166,7 @@ void FittsView::initWindows() {
 
     startBtn = new QPushButton("Démarrer");
     //startBtn->setMinimumHeight(50); //
-    startBtn->setStyleSheet("QPushButton { background-color: #339DFF; min-height: 50px;}");
+    startBtn->setStyleSheet("QPushButton { background-color: #339DFF; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px}");
 
 /*
     QPalette palette = startBtn->palette();
@@ -180,7 +187,8 @@ void FittsView::initWindows() {
     testLabel = new QLabel;
     testLayout->addWidget(testLabel);
 
-    label = new QLabel("Cliquez sur les cibles qui apparaissent en <font color='red'><strong>rouge</strong></font>");
+    label = new QLabel("Cliquez sur les cibles qui apparaissent en <font color='#B22222'><strong>rouge</strong></font>");
+    label->setStyleSheet("font-size: 15px");
     testLayout->addWidget(label);
 
     graphicView = new GraphicWidget;
@@ -269,6 +277,7 @@ void FittsView::initWindows() {
 
 void FittsView::updateTestMsg() {
     this->testLabel->setText("<strong>Le test commencera après avoir appuyé sur la cible <font color='#339DFF'>bleue</font>.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
+    this->testLabel->setStyleSheet("font-size: 15px");
 }
 
 
