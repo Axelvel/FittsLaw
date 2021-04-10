@@ -61,6 +61,7 @@ private:
     QLabel *quitLabel;
 
     QChartView *plot;
+    QChartView *graphicResult;
 
     QWidget *quitWindow;
     QWidget *mainWidget;
