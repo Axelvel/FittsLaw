@@ -75,10 +75,53 @@ void FittsView::initWindows() {
     settingsLayout->addWidget(label);
 
 
+    QGroupBox *rappelBox = new QGroupBox("Rappel :");
+    settingsLayout->addWidget(rappelBox);
+    QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
+
+    rappelBox->setStyleSheet("font-size: 15px");
+
+    QVBoxLayout *rappelLeftLayout = new QVBoxLayout();
+    rappelLayout->addLayout(rappelLeftLayout,2);
+
+    label = new QLabel("Formule utilisée:");
+    rappelLeftLayout->addWidget(label);
+
+
+    label = new QLabel;
+    label->setPixmap(QPixmap(":/data/formule.png").scaled(200,100,Qt::KeepAspectRatio));
+    rappelLeftLayout->addWidget(label);
 
 
 
-    //Config Box
+
+
+
+
+
+
+    QGridLayout *rappelRightLayout = new QGridLayout();
+
+    rappelLayout->addLayout(rappelRightLayout,1);
+
+    label = new QLabel("Choix de a et b");
+    rappelRightLayout->addWidget(label,0,0,1,2);
+
+    rappelRightLayout->addWidget(new QLabel("Variable a "),1,0);
+    rappelRightLayout->addWidget(new QLabel("Variable b "),2,0);
+
+    aValue = new QDoubleSpinBox;
+    aValue->setValue(this->fittsModel->a);
+    //aValue->setMinimumHeight(30); //
+    //aValue->setStyleSheet("QDoubleSpinBox {   min-width: 200px; min-height: 200px; }");
+    //aValue->
+    rappelRightLayout->addWidget(aValue,1,1);
+
+
+    bValue = new QDoubleSpinBox;
+    bValue->setValue(this->fittsModel->b);
+    bValue->setMinimumHeight(30);
+    rappelRightLayout->addWidget(bValue,2,1);
 
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
@@ -134,12 +177,6 @@ void FittsView::initWindows() {
 
 
 
-
-
-
-
-
-
     // Test part
 
     QWidget *testWidget = new QWidget;
@@ -176,49 +213,17 @@ void FittsView::initWindows() {
     btnLayout->addWidget(resultBtn);
     resultBtn->setEnabled(false);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //Results Window
-
-
     QWidget *resultWidget = new QWidget;
-
-
     mainStack->addWidget(resultWidget);
+
     QVBoxLayout *resultLayout = new QVBoxLayout(resultWidget);
 
+    plot = new QChartView;
+    resultLayout->addWidget(plot);
 
-    //Tab Widget
-    QTabWidget * tabWidget = new QTabWidget;
+    graphicResult = new QChartView;
 
-    resultLayout->addWidget(tabWidget);
-
-    QWidget * graph1 = new QWidget;
-    QWidget * graph2 = new QWidget;
-
-    QVBoxLayout * graph1Layout = new QVBoxLayout(graph1);
-    QVBoxLayout * graph2Layout = new QVBoxLayout(graph2);
-
-    tabWidget->addTab(graph1, "Graphique 1");
-    tabWidget->addTab(graph2, "Graphique 2");
-
-
-
-    //Results box
-
-    QGroupBox *resultBox =  new QGroupBox("Stats");
+    QGroupBox *resultBox =  new QGroupBox("Statistiques");
     resultLayout->addWidget(resultBox);
     QGridLayout *resultBoxLayout = new QGridLayout(resultBox);
 
@@ -245,64 +250,31 @@ void FittsView::initWindows() {
     resultBoxLayout->setColumnStretch(1,10);
     resultBoxLayout->setColumnStretch(3,10);
 
-    //Rappel box
+    resultLayout->addWidget(graphicResult);
 
-    QGroupBox *rappelBox = new QGroupBox("Rappel :");
+    QGroupBox *secondRBox = new QGroupBox("Statistiques");
+    resultLayout->addWidget(secondRBox);
+    QGridLayout *secondRBoxLayout = new QGridLayout(secondRBox);
 
-    //settingsLayout->addWidget(rappelBox);
-    QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
+    label = new QLabel("Ecart-Type : ");
+    secondRBoxLayout->addWidget(label,0,0);
+    ecartType2 = new QLabel;
+    secondRBoxLayout->addWidget(ecartType2,0,1);
 
-    rappelBox->setStyleSheet("font-size: 15px");
+    label = new QLabel("Erreur-Type : ");
+    secondRBoxLayout->addWidget(label,1,0);
+    erreurType2 = new QLabel;
+    secondRBoxLayout->addWidget(erreurType2,1,1);
 
-    QVBoxLayout *rappelLeftLayout = new QVBoxLayout();
-    rappelLayout->addLayout(rappelLeftLayout,2);
+    label = new QLabel("Différence moyenne : ");
+    secondRBoxLayout->addWidget(label,0,2);
+    diffMoy2 = new QLabel;
+    secondRBoxLayout->addWidget(diffMoy2,0,3);
 
-    label = new QLabel("Formule utilisée:");
-    rappelLeftLayout->addWidget(label);
-
-
-    label = new QLabel;
-    label->setPixmap(QPixmap(":/data/formule.png").scaled(200,100,Qt::KeepAspectRatio));
-    rappelLeftLayout->addWidget(label);
-
-
-    QGridLayout *rappelRightLayout = new QGridLayout();
-
-    rappelLayout->addLayout(rappelRightLayout,1);
-
-    label = new QLabel("Choix de a et b");
-    rappelRightLayout->addWidget(label,0,0,1,2);
-
-    rappelRightLayout->addWidget(new QLabel("Variable a "),1,0);
-    rappelRightLayout->addWidget(new QLabel("Variable b "),2,0);
-
-    aValue = new QDoubleSpinBox;
-    aValue->setValue(this->fittsModel->a);
-    //aValue->setMinimumHeight(30); //
-    //aValue->setStyleSheet("QDoubleSpinBox {   min-width: 200px; min-height: 200px; }");
-    //aValue->
-    rappelRightLayout->addWidget(aValue,1,1);
-
-
-    bValue = new QDoubleSpinBox;
-    bValue->setValue(this->fittsModel->b);
-    bValue->setMinimumHeight(30);
-    rappelRightLayout->addWidget(bValue,2,1);
-
-
-
-    //Graph 1 Tab
-    plot = new QChartView;
-    graph1Layout->addWidget(plot); //TODO:Change name of graph1
-   // graph1Layout->addWidget(resultBox);
-    graph1Layout->addWidget(rappelBox);
-
-    //Graph2 Tab
-    graphicResult = new QChartView;
-    graph2Layout->addWidget(graphicResult); //TODO: Change name of graph2
-
-
-
+    label = new QLabel("Intervalle de confiance à 95% : ");
+    secondRBoxLayout->addWidget(label,1,2);
+    itc952 = new QLabel;
+    secondRBoxLayout->addWidget(itc952,1,3);
 
     btnLayout = new QHBoxLayout;
     resultLayout->addLayout(btnLayout);
@@ -314,11 +286,6 @@ void FittsView::initWindows() {
     restartBtn = new QPushButton("Recommencer");
     restartBtn->setMinimumHeight(50);
     btnLayout->addWidget(restartBtn);
-
-
-
-
-    //Confirmation Window
 
     quitWindow = new QWidget;
 

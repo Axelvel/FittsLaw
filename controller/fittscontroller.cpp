@@ -62,12 +62,9 @@ void FittsController::resultClicked() {
 }
 void FittsController::aValueChanged(double value) {
     this->fittsModel->a = value;
-    this->calculateResult();
 }
 void FittsController::bValueChanged(double value) {
     this->fittsModel->b = value;
-    this->calculateResult();
-
 }
 void FittsController::nbCibleChanged(int value) {
     this->fittsModel->nbCible = value;
@@ -284,7 +281,7 @@ void FittsController::calculateSecondResult(){
 
 
 
-    /*// Calcul des valeurs
+    // Calcul des valeurs
     // Moyennes
     QList<double> diffValues;
     double diffMoy = 0;
@@ -296,7 +293,7 @@ void FittsController::calculateSecondResult(){
     diffMoy /= fittsValues.size();
 
     // On stock la difference de moyenne
-    this->fittsModel->diffMoy = fabs(diffMoy);
+    this->fittsView->diffMoy2->setText(QString::number(diffMoy));
 
 
     // Ecart type
@@ -310,14 +307,13 @@ void FittsController::calculateSecondResult(){
     double ecartType = sqrt(variance);
 
     // On stock l'ecart type
-    this->fittsModel->ecartType = ecartType;
+    this->fittsView->ecartType2->setText(QString::number(ecartType));
+
     // On stock l'erreur type
-    this->fittsModel->erreurType = fabs(ecartType / sqrt(fittsValues.size()));
+    this->fittsView->erreurType2->setText(QString::number(fabs(ecartType / sqrt(fittsValues.size()))));
 
     // On stock itc 95%
-    this->fittsModel->itc95 = 2 * this->fittsModel->erreurType;
-
-    this->fittsView->displayResults();*/
+    this->fittsView->itc952->setText(QString::number(2*fabs(ecartType / sqrt(fittsValues.size()))));
 }
 
 void FittsController::showQuitWindow(){

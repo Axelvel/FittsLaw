@@ -59,6 +59,10 @@ private:
     QLabel *diffMoy;
     QLabel *itc95;
     QLabel *quitLabel;
+    QLabel *ecartType2;
+    QLabel *erreurType2;
+    QLabel *diffMoy2;
+    QLabel *itc952;
 
     QChartView *plot;
     QChartView *graphicResult;
