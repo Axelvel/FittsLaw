@@ -61,9 +61,11 @@ void FittsController::resultClicked() {
 }
 void FittsController::aValueChanged(double value) {
     this->fittsModel->a = value;
+    this->calculateResult(); //
 }
 void FittsController::bValueChanged(double value) {
     this->fittsModel->b = value;
+    this->calculateResult(); //
 }
 void FittsController::nbCibleChanged(int value) {
     this->fittsModel->nbCible = value;
@@ -129,7 +131,7 @@ void FittsController::nextCible() {
     this->fittsModel->cercleSize.append(size);
 
     // On place le cercle
-    scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red")));
+    scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("red")),QBrush(QColor("red"))); //TODO:Update colors
 }
 
 
@@ -152,12 +154,13 @@ void FittsController::initGame() {
     qreal posY = scene->height() / 2;
     int size = 100;
 
-    scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("blue")),QBrush(QColor("blue")));
+    scene->addEllipse(posX - (size / 2), posY - (size / 2), size, size, QPen(QColor("blue")),QBrush(QColor("blue"))); //TODO:Update colors
 }
 
 void FittsController::calculateResult() {
     QChart *chart = new QChart;
     this->fittsView->plot->setChart(chart);
+    //this->fittsView->plot->repaint();
     this->fittsView->plot->setRenderHint(QPainter::Antialiasing);
     chart->setTitle("Résultats loi Fitts");
     chart->setAnimationOptions(QChart::AllAnimations);
@@ -172,6 +175,8 @@ void FittsController::calculateResult() {
     QCategoryAxis *axis = new QCategoryAxis;
 
     QList<double> fittsValues;
+
+    //fittsSeries->replace()
 
     for(int i = 0; i < this->fittsModel->nbCible; ++i) {
         double T = this->fittsModel->times[i];
