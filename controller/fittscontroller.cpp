@@ -62,9 +62,12 @@ void FittsController::resultClicked() {
 }
 void FittsController::aValueChanged(double value) {
     this->fittsModel->a = value;
+    this->calculateResult();
 }
 void FittsController::bValueChanged(double value) {
     this->fittsModel->b = value;
+    this->calculateResult();
+
 }
 void FittsController::nbCibleChanged(int value) {
     this->fittsModel->nbCible = value;
