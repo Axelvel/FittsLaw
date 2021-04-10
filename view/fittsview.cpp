@@ -301,7 +301,29 @@ void FittsView::initWindows() {
     graphicResult = new QChartView;
     graph2Layout->addWidget(graphicResult); //TODO: Change name of graph2
 
+    QGroupBox *secondRBox = new QGroupBox("Statistiques");
+    resultLayout->addWidget(secondRBox);
+    QGridLayout *secondRBoxLayout = new QGridLayout(secondRBox);
 
+    label = new QLabel("Ecart-Type : ");
+    secondRBoxLayout->addWidget(label,0,0);
+    ecartType2 = new QLabel;
+    secondRBoxLayout->addWidget(ecartType2,0,1);
+
+    label = new QLabel("Erreur-Type : ");
+    secondRBoxLayout->addWidget(label,1,0);
+    erreurType2 = new QLabel;
+    secondRBoxLayout->addWidget(erreurType2,1,1);
+
+    label = new QLabel("Différence moyenne : ");
+    secondRBoxLayout->addWidget(label,0,2);
+    diffMoy2 = new QLabel;
+    secondRBoxLayout->addWidget(diffMoy2,0,3);
+
+    label = new QLabel("Intervalle de confiance à 95% : ");
+    secondRBoxLayout->addWidget(label,1,2);
+    itc952 = new QLabel;
+    secondRBoxLayout->addWidget(itc952,1,3);
 
 
     btnLayout = new QHBoxLayout;
