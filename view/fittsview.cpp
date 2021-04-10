@@ -218,8 +218,7 @@ void FittsView::initWindows() {
 
     //Results box
 
-    QGroupBox *resultBox =  new QGroupBox("Stats");
-    resultLayout->addWidget(resultBox);
+    QGroupBox *resultBox =  new QGroupBox("Statistiques");
     QGridLayout *resultBoxLayout = new QGridLayout(resultBox);
 
     label = new QLabel("Ecart-Type : ");
@@ -294,14 +293,36 @@ void FittsView::initWindows() {
     //Graph 1 Tab
     plot = new QChartView;
     graph1Layout->addWidget(plot); //TODO:Change name of graph1
-   // graph1Layout->addWidget(resultBox);
+    graph1Layout->addWidget(resultBox);
     graph1Layout->addWidget(rappelBox);
 
     //Graph2 Tab
     graphicResult = new QChartView;
     graph2Layout->addWidget(graphicResult); //TODO: Change name of graph2
 
+    QGroupBox *secondRBox = new QGroupBox("Statistiques");
+    graph2Layout->addWidget(secondRBox);
+    QGridLayout *secondRBoxLayout = new QGridLayout(secondRBox);
 
+    label = new QLabel("Ecart-Type : ");
+    secondRBoxLayout->addWidget(label,0,0);
+    ecartType2 = new QLabel;
+    secondRBoxLayout->addWidget(ecartType2,0,1);
+
+    label = new QLabel("Erreur-Type : ");
+    secondRBoxLayout->addWidget(label,1,0);
+    erreurType2 = new QLabel;
+    secondRBoxLayout->addWidget(erreurType2,1,1);
+
+    label = new QLabel("Différence moyenne : ");
+    secondRBoxLayout->addWidget(label,0,2);
+    diffMoy2 = new QLabel;
+    secondRBoxLayout->addWidget(diffMoy2,0,3);
+
+    label = new QLabel("Intervalle de confiance à 95% : ");
+    secondRBoxLayout->addWidget(label,1,2);
+    itc952 = new QLabel;
+    secondRBoxLayout->addWidget(itc952,1,3);
 
 
     btnLayout = new QHBoxLayout;
