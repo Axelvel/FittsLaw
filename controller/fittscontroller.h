@@ -21,6 +21,7 @@ private:
     void nextCible();
 
     void calculateResult();
+    void calculateSecondResult();
 
     FittsModel *fittsModel;
     FittsView *fittsView;

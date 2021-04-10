@@ -44,6 +44,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-INCLUDEPATH += "$$PWD\FittsLaw\view\"
-INCLUDEPATH += "$$PWD\FittsLaw\model\"
-INCLUDEPATH += "$$PWD\FittsLaw\controller\"
+#INCLUDEPATH += \
+ #   ..\View \
+ #   ..\Model \
+#INCLUDEPATH += -I "..\Model"
+#INCLUDEPATH += "..\View"
