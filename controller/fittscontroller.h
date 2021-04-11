@@ -34,11 +34,18 @@ private slots:
     void backToSettings();
     void resultClicked();
 
+
+    //Spinboxes
     void aValueChanged(double value);
     void bValueChanged(double value);
     void nbCibleChanged(int value);
     void minSizeChanged(int value);
     void maxSizeChanged(int value);
+
+    //Sliders
+    void nbSliderChanged(int value); //
+    void minSliderChanged(int value);
+    void maxSliderChanged(int value);
 
     void cibleClicked(int x, int y);
 
