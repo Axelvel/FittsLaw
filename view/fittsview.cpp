@@ -133,25 +133,27 @@ void FittsView::initWindows() {
 
 
     minSize = new QSpinBox;
-    minSize->setMaximum(1000);
+    minSize->setMinimum(5);
+    minSize->setMaximum(300);
     minSize->setValue(this->fittsModel->minSize);
     configLayout->addWidget(minSize,2,1);
 
     //Slider 2 minSize
     minSizeSlider = new QSlider(Qt::Horizontal);
-    minSizeSlider->setRange(0,1000);
+    minSizeSlider->setRange(5,300);
     minSizeSlider->setValue(10);
     nbCibleSlider->setMinimumWidth(200);
     configLayout->addWidget(minSizeSlider, 2, 2);
 
     maxSize = new QSpinBox;
-    maxSize->setMaximum(1000);
+    maxSize->setMinimum(5);
+    maxSize->setMaximum(300);
     maxSize->setValue(this->fittsModel->maxSize);
     configLayout->addWidget(maxSize,3,1);
 
     //Slider 3 maxSize
     maxSizeSlider = new QSlider(Qt::Horizontal);
-    maxSizeSlider->setRange(0,1000);
+    maxSizeSlider->setRange(5,300);
     maxSizeSlider->setValue(150);
     maxSizeSlider->setMinimumWidth(200);
     configLayout->addWidget(maxSizeSlider, 3, 2);
