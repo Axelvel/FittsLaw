@@ -71,13 +71,48 @@ void FittsController::bValueChanged(double value) {
 }
 void FittsController::nbCibleChanged(int value) {
     this->fittsModel->nbCible = value;
+    this->fittsView->nbCibleSlider->setValue(value); //Changed value of Slider
 }
+
+
+void FittsController::nbSliderChanged(int value) {
+    this->fittsModel->nbCible = value;
+    this->fittsView->nbCible->setValue(value); //Changes value of SpinBox
+}
+
+
 void FittsController::minSizeChanged(int value) {
     this->fittsModel->minSize = value;
+    this->fittsView->minSizeSlider->setValue(value);
 }
+
+void FittsController::minSliderChanged(int value) {
+    this->fittsModel->minSize = value;
+    this->fittsView->minSize->setValue(value); //Changes value of SpinBox
+
+    if (this->fittsView->minSizeSlider->value() > this->fittsView->maxSizeSlider->value()) {
+        this->fittsView->maxSizeSlider->setValue(value);
+    }
+}
+
+
 void FittsController::maxSizeChanged(int value) {
     this->fittsModel->maxSize = value;
+    this->fittsView->maxSizeSlider->setValue(value);
 }
+
+void FittsController::maxSliderChanged(int value) {
+    this->fittsModel->maxSize = value;
+    this->fittsView->maxSize->setValue(value); //Changes value of SpinBox
+
+    if (this->fittsView->minSizeSlider->value() > this->fittsView->maxSizeSlider->value()) {
+        this->fittsView->minSizeSlider->setValue(value);
+    }
+
+
+}
+
+
 void FittsController::cibleClicked(int x, int y) {
     if(this->fittsModel->cercleCenter.isEmpty()) {
         // Si vide alors premier click, on demarre le timer

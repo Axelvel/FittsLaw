@@ -48,6 +48,11 @@ private:
     QSpinBox *minSize;
     QSpinBox *maxSize;
 
+    QSlider *nbCibleSlider;
+    QSlider *minSizeSlider;
+    QSlider *maxSizeSlider;
+
+
     QStackedLayout *mainStack;
 
     GraphicWidget *graphicView;

@@ -47,6 +47,12 @@ FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
     connect(nbCible,SIGNAL(valueChanged(int)),fittsController,SLOT(nbCibleChanged(int)));
     connect(minSize,SIGNAL(valueChanged(int)),fittsController,SLOT(minSizeChanged(int)));
     connect(maxSize,SIGNAL(valueChanged(int)),fittsController,SLOT(maxSizeChanged(int)));
+
+
+    // Sliders value updated
+    connect(nbCibleSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(nbSliderChanged(int)));
+    connect(minSizeSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(minSliderChanged(int)));
+    connect(maxSizeSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(maxSliderChanged(int)));
 }
 
 FittsView::~FittsView() {}
@@ -65,6 +71,7 @@ void FittsView::initWindows() {
     mainStack->addWidget(settingsWidget);
 
     QVBoxLayout *settingsLayout = new QVBoxLayout(settingsWidget);
+    settingsLayout->setSpacing(50);
 
 
     QLabel *label;
@@ -95,9 +102,12 @@ void FittsView::initWindows() {
     //Config Box
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
+    configBox->setMaximumWidth(1000);
     //settingsLayout->addWidget(configBox);
     firstLayout->addWidget(configBox);
     QGridLayout *configLayout = new QGridLayout(configBox);
+    configLayout->setVerticalSpacing(40);
+    //configLayout->setSpacing(50);
 
     configBox->setStyleSheet("font-size: 15px"); //
 
@@ -112,15 +122,38 @@ void FittsView::initWindows() {
     nbCible->setMaximum(100);
     configLayout->addWidget(nbCible,1,1);
 
+    //Slider 1 nbCible
+    nbCibleSlider = new QSlider(Qt::Horizontal);
+    nbCibleSlider->setRange(0,99);
+    nbCibleSlider->setValue(10);
+    nbCibleSlider->setMinimumWidth(200);
+    //nbCibleSlider->setMaximumWidth(600);
+    configLayout->addWidget(nbCibleSlider, 1, 2);
+
+
     minSize = new QSpinBox;
     minSize->setMaximum(1000);
     minSize->setValue(this->fittsModel->minSize);
     configLayout->addWidget(minSize,2,1);
 
+    //Slider 2 minSize
+    minSizeSlider = new QSlider(Qt::Horizontal);
+    minSizeSlider->setRange(0,1000);
+    minSizeSlider->setValue(10);
+    nbCibleSlider->setMinimumWidth(200);
+    configLayout->addWidget(minSizeSlider, 2, 2);
+
     maxSize = new QSpinBox;
     maxSize->setMaximum(1000);
     maxSize->setValue(this->fittsModel->maxSize);
     configLayout->addWidget(maxSize,3,1);
+
+    //Slider 3 maxSize
+    maxSizeSlider = new QSlider(Qt::Horizontal);
+    maxSizeSlider->setRange(0,1000);
+    maxSizeSlider->setValue(150);
+    maxSizeSlider->setMinimumWidth(200);
+    configLayout->addWidget(maxSizeSlider, 3, 2);
 
 
 
