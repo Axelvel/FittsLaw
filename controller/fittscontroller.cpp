@@ -3,6 +3,7 @@
 #include "../Model/fittsmodel.h"
 //#include "fittsview.h"
 //#include "fittsmodel.h"
+#include <iostream>
 
 #include <QApplication>
 #include <QDebug>
@@ -67,18 +68,43 @@ void FittsController::resultClicked() {
     this->calculateResult();
     this->calculateSecondResult();
 }
+
+// a value
 void FittsController::aValueChanged(double value) {
     this->fittsModel->a = value;
+    value *= 100;
+    int v = (value);
+    this->fittsView->aSlider->setValue(v); //Changes value of Slider
     this->calculateResult();
 }
+
+void FittsController::aSliderChanged(int value) {
+    double v = (double) value / 100.0;
+    this->fittsModel->a = v;
+    this->fittsView->aValue->setValue(v); //Changes value of SpinBox
+}
+
+
+//b value
 void FittsController::bValueChanged(double value) {
     this->fittsModel->b = value;
+    value *= 100;
+    int v = (value);
+    this->fittsView->bSlider->setValue(v);
     this->calculateResult();
 
 }
+
+void FittsController::bSliderChanged(int value) {
+    double v = (double) value / 100.0;
+    this->fittsModel->b = v;
+    this->fittsView->bValue->setValue(v); //Changes value of SpinBox
+}
+
+
 void FittsController::nbCibleChanged(int value) {
     this->fittsModel->nbCible = value;
-    this->fittsView->nbCibleSlider->setValue(value); //Changed value of Slider
+    this->fittsView->nbCibleSlider->setValue(value); //Changes value of Slider
 }
 
 
