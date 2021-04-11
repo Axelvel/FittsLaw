@@ -213,10 +213,12 @@ void FittsView::initWindows() {
     testLayout->addLayout(btnLayout);
 
     backBtn = new QPushButton("Retour");
+    backBtn->setStyleSheet("background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     backBtn->setMinimumHeight(50); //
     btnLayout->addWidget(backBtn);
 
     resultBtn = new QPushButton("Résultats");
+    resultBtn->setStyleSheet("background-color: gray; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     resultBtn->setMinimumHeight(50); //
     btnLayout->addWidget(resultBtn);
     resultBtn->setEnabled(false);
@@ -374,10 +376,12 @@ void FittsView::initWindows() {
     resultLayout->addLayout(btnLayout);
 
     resultLeaveBtn = new QPushButton("Quitter");
+    resultLeaveBtn->setStyleSheet("background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     resultLeaveBtn->setMinimumHeight(50);
     btnLayout->addWidget(resultLeaveBtn);
 
     restartBtn = new QPushButton("Recommencer");
+    restartBtn->setStyleSheet("background-color: #339DFF; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     restartBtn->setMinimumHeight(50);
     btnLayout->addWidget(restartBtn);
 
@@ -402,10 +406,12 @@ void FittsView::initWindows() {
     quitParent->addLayout(quitLayout);
 
     quitButton = new QPushButton("Quitter");
+    quitButton->setStyleSheet("background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     quitButton->setMinimumHeight(50);
     quitLayout->addWidget(quitButton);
 
     escapeButton = new QPushButton("Annuler");
+    escapeButton->setStyleSheet("background-color: gray; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     escapeButton->setMinimumHeight(50);
     quitLayout->addWidget(escapeButton);
 }
