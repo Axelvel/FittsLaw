@@ -53,9 +53,12 @@ void FittsController::quit() {
 
 void FittsController::backToSettings() {
     this->fittsView->mainStack->setCurrentIndex(0);
+    this->fittsView->resultBtn->setStyleSheet("background-color: gray; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
+
 }
 void FittsController::resultClicked() {
     this->fittsView->mainStack->setCurrentIndex(2);
+    this->fittsView->resultBtn->setStyleSheet("background-color: gray; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
 
     this->calculateResult();
     this->calculateSecondResult();
@@ -175,6 +178,7 @@ void FittsController::nextCible() {
 void FittsController::finish() {
     this->fittsView->graphicView->setEnabled(false);
     this->fittsView->resultBtn->setEnabled(true);
+    this->fittsView->resultBtn->setStyleSheet("background-color: #339DFF; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
 }
 
 void FittsController::initGame() {
