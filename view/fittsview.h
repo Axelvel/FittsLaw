@@ -62,6 +62,7 @@ private:
     QGraphicsScene *scene;
 
     QLabel *testLabel;
+    QLabel *testLabel2;
     QLabel *ecartType;
     QLabel *erreurType;
     QLabel *diffMoy;

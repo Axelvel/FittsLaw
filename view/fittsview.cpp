@@ -200,9 +200,9 @@ void FittsView::initWindows() {
     testLabel = new QLabel;
     testLayout->addWidget(testLabel);
 
-    label = new QLabel("Cliquez sur les cibles qui apparaissent en <font color='#B22222'><strong>rouge</strong></font>");
-    label->setStyleSheet("font-size: 15px");
-    testLayout->addWidget(label);
+    testLabel2 = new QLabel("Cliquez sur les cibles qui apparaissent en <font color='#B22222'><strong>rouge</strong></font>");
+    testLabel2->setStyleSheet("font-size: 15px");
+    testLayout->addWidget(testLabel2);
 
     graphicView = new GraphicWidget;
     testLayout->addWidget(graphicView);
@@ -299,12 +299,12 @@ void FittsView::initWindows() {
     resultBoxLayout->setColumnStretch(1,10);
     resultBoxLayout->setColumnStretch(3,10);
 
+
+
     //Rappel box
 
     QGroupBox *rappelBox = new QGroupBox("Rappel :");
-    //rappelBox->setFont(QFont("Arial", 50));
 
-    //settingsLayout->addWidget(rappelBox);
     QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
 
     QVBoxLayout *rappelLeftLayout = new QVBoxLayout();
@@ -436,8 +436,15 @@ void FittsView::initWindows() {
 
 
 void FittsView::updateTestMsg() {
-    this->testLabel->setText("<strong>Le test commencera après avoir appuyé sur la cible <font color='#339DFF'>bleue</font>.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
-    this->testLabel->setFont(QFont("Arial", 18));
+
+    if (this->fittsModel->cibleLeft == 0) {
+        this->testLabel->setText("Félicitation, vous avez terminé le test !");
+        this->testLabel2->hide();
+    } else {
+        this->testLabel->setText("<strong>Le test commencera après avoir appuyé sur la cible <font color='#339DFF'>bleue</font>.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
+        this->testLabel->setFont(QFont("Arial", 18));
+        this->testLabel2->show();
+    }
 }
 
 
