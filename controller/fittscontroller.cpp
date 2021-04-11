@@ -356,10 +356,10 @@ void FittsController::calculateSecondResult(){
 
 void FittsController::showQuitWindow(){
     this->fittsView->quitWindow->show();
-    this->fittsView->mainWidget->hide();
+    this->fittsView->hide();
 }
 
 void FittsController::escape(){
     this->fittsView->quitWindow->hide();
-    this->fittsView->mainWidget->show();
+    this->fittsView->show();
 }

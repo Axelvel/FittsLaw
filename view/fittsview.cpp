@@ -59,6 +59,7 @@ FittsView::~FittsView() {}
 
 void FittsView::initWindows() {
 
+
     mainWidget = new QWidget;
     this->setCentralWidget(mainWidget);
 
@@ -89,10 +90,7 @@ void FittsView::initWindows() {
     explanationsLabel->setFont(QFont("Arial", 15));
     explanationsLabel->setMaximumWidth(300);
     explanationsLabel->setWordWrap(true);
-    //settingsLayout->addWidget(explicationsLabel);
     firstLayout->addWidget(explanationsLabel);
-
-
 
 
 
@@ -389,6 +387,11 @@ void FittsView::initWindows() {
     //Confirmation Window
 
     quitWindow = new QWidget;
+    quitWindow->setMinimumSize(QSize(500,300));
+
+    QSize screenSize = qApp->screens()[0]->size();
+    quitWindow->move((screenSize.width()/2) - (250), (screenSize.height()/2) - ((150)));
+
 
     QVBoxLayout *quitParent = new QVBoxLayout(quitWindow);
 
@@ -406,6 +409,7 @@ void FittsView::initWindows() {
     escapeButton->setMinimumHeight(50);
     quitLayout->addWidget(escapeButton);
 }
+
 
 void FittsView::updateTestMsg() {
     this->testLabel->setText("<strong>Le test commencera après avoir appuyé sur la cible <font color='#339DFF'>bleue</font>.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
