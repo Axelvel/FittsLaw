@@ -48,6 +48,9 @@ private:
     QSpinBox *minSize;
     QSpinBox *maxSize;
 
+
+    QSlider *aSlider;
+    QSlider *bSlider;
     QSlider *nbCibleSlider;
     QSlider *minSizeSlider;
     QSlider *maxSizeSlider;

@@ -50,6 +50,9 @@ FittsView::FittsView(FittsModel *fittsModel) : QMainWindow() {
 
 
     // Sliders value updated
+    //connect(aSlider, SIGNAL(valueChanged(double)), fittsController, SLOT(aSliderChanged(double)));
+    connect(aSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(aSliderChanged(int)));
+    connect(bSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(bSliderChanged(int)));
     connect(nbCibleSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(nbSliderChanged(int)));
     connect(minSizeSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(minSliderChanged(int)));
     connect(maxSizeSlider, SIGNAL(valueChanged(int)), fittsController, SLOT(maxSliderChanged(int)));
@@ -325,17 +328,28 @@ void FittsView::initWindows() {
     rappelRightLayout->addWidget(new QLabel("Variable b "),2,0);
 
     aValue = new QDoubleSpinBox;
-    aValue->setValue(this->fittsModel->a);
-    //aValue->setMinimumHeight(30); //
-    //aValue->setStyleSheet("QDoubleSpinBox {   min-width: 200px; min-height: 200px; }");
-    //aValue->
+    aValue->setRange(0,10);
+    aValue->setValue(this->fittsModel->a); //TODO: Remove ?
     rappelRightLayout->addWidget(aValue,1,1);
+
+    //Slider a
+
+    aSlider = new QSlider(Qt::Horizontal);
+    aSlider->setRange(0,1000);
+    rappelRightLayout->addWidget(aSlider, 1, 2);
 
 
     bValue = new QDoubleSpinBox;
+    bValue->setRange(0,10);
     bValue->setValue(this->fittsModel->b);
-    bValue->setMinimumHeight(30);
+    bValue->setMinimumHeight(30); //TODO: Remove
     rappelRightLayout->addWidget(bValue,2,1);
+
+    //Slider b
+
+    bSlider = new QSlider(Qt::Horizontal);
+    bSlider->setRange(0,1000);
+    rappelRightLayout->addWidget(bSlider, 2, 2);
 
 
 
