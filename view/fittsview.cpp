@@ -78,12 +78,12 @@ void FittsView::initWindows() {
     QHBoxLayout * firstLayout = new QHBoxLayout;
     settingsLayout->addLayout(firstLayout);
 
-    QLabel * explicationsLabel = new QLabel("Ce programme a pour but de vérifier la loi de Fitts, un modèle du mouvement humain, indicatif de la difficulté d'une tâche. Vous allez devoir passer un petit test. À la fin, nous comparerons vos résultats avec une approximation généré par le modèle.");
-    explicationsLabel->setFont(QFont("Arial", 15));
-    explicationsLabel->setMaximumWidth(300);
-    explicationsLabel->setWordWrap(true);
+    QLabel * explanationsLabel = new QLabel("Ce programme a pour but de vérifier la loi de Fitts, un modèle du mouvement humain, indicatif de la difficulté d'une tâche. Vous allez devoir passer un petit test. À la fin, nous comparerons vos résultats avec une approximation généré par le modèle.");
+    explanationsLabel->setFont(QFont("Arial", 15));
+    explanationsLabel->setMaximumWidth(300);
+    explanationsLabel->setWordWrap(true);
     //settingsLayout->addWidget(explicationsLabel);
-    firstLayout->addWidget(explicationsLabel);
+    firstLayout->addWidget(explanationsLabel);
 
 
 
@@ -93,7 +93,6 @@ void FittsView::initWindows() {
 
 
     //Config Box
-
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
     //settingsLayout->addWidget(configBox);
@@ -130,7 +129,7 @@ void FittsView::initWindows() {
     settingsLayout->addLayout(btnLayout);
 
     leaveBtn = new QPushButton("Quitter");
-    leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px}");
+    leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
     //leaveBtn->setMinimumHeight(50);
     btnLayout->addWidget(leaveBtn);
 
@@ -138,7 +137,7 @@ void FittsView::initWindows() {
 
     startBtn = new QPushButton("Démarrer");
     //startBtn->setMinimumHeight(50); //
-    startBtn->setStyleSheet("QPushButton { background-color: #339DFF; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px}");
+    startBtn->setStyleSheet("QPushButton { background-color: #339DFF; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
 
 /*
     QPalette palette = startBtn->palette();
