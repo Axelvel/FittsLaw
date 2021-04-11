@@ -79,7 +79,7 @@ void FittsView::initWindows() {
 
     label = new QLabel("Programme pour vérifier la loi Fitts");
     label->setAlignment(Qt::AlignCenter);
-    label->setFont(QFont("Arial",30));
+    label->setFont(QFont("Arial",35, QFont::Bold));
     settingsLayout->addWidget(label);
 
 
@@ -87,7 +87,7 @@ void FittsView::initWindows() {
     settingsLayout->addLayout(firstLayout);
 
     QLabel * explanationsLabel = new QLabel("Ce programme a pour but de vérifier la loi de Fitts, un modèle du mouvement humain, indicatif de la difficulté d'une tâche. Vous allez devoir passer un petit test. À la fin, nous comparerons vos résultats avec une approximation généré par le modèle.");
-    explanationsLabel->setFont(QFont("Arial", 15));
+    explanationsLabel->setFont(QFont("Arial", 17));
     explanationsLabel->setMaximumWidth(300);
     explanationsLabel->setWordWrap(true);
     firstLayout->addWidget(explanationsLabel);
@@ -160,7 +160,7 @@ void FittsView::initWindows() {
     settingsLayout->addLayout(btnLayout);
 
     leaveBtn = new QPushButton("Quitter");
-    leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
+    leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
     //leaveBtn->setMinimumHeight(50);
     btnLayout->addWidget(leaveBtn);
 
@@ -168,7 +168,7 @@ void FittsView::initWindows() {
 
     startBtn = new QPushButton("Démarrer");
     //startBtn->setMinimumHeight(50); //
-    startBtn->setStyleSheet("QPushButton { background-color: #339DFF; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
+    startBtn->setStyleSheet("QPushButton { background-color: #339DFF; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
 
 /*
     QPalette palette = startBtn->palette();
@@ -213,12 +213,12 @@ void FittsView::initWindows() {
     testLayout->addLayout(btnLayout);
 
     backBtn = new QPushButton("Retour");
-    backBtn->setStyleSheet("background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
+    backBtn->setStyleSheet("background-color: #B22222; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     backBtn->setMinimumHeight(50); //
     btnLayout->addWidget(backBtn);
 
     resultBtn = new QPushButton("Résultats");
-    resultBtn->setStyleSheet("background-color: gray; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
+    resultBtn->setStyleSheet("background-color: gray; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     resultBtn->setMinimumHeight(50); //
     btnLayout->addWidget(resultBtn);
     resultBtn->setEnabled(false);
@@ -253,6 +253,8 @@ void FittsView::initWindows() {
     resultLayout->addWidget(tabWidget);
 
     QWidget * graph1 = new QWidget;
+    //graph1->setMinimumSize(QSize(1000,700));
+
     QWidget * graph2 = new QWidget;
 
     QVBoxLayout * graph1Layout = new QVBoxLayout(graph1);
@@ -376,12 +378,12 @@ void FittsView::initWindows() {
     resultLayout->addLayout(btnLayout);
 
     resultLeaveBtn = new QPushButton("Quitter");
-    resultLeaveBtn->setStyleSheet("background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
+    resultLeaveBtn->setStyleSheet("background-color: #B22222; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     resultLeaveBtn->setMinimumHeight(50);
     btnLayout->addWidget(resultLeaveBtn);
 
     restartBtn = new QPushButton("Recommencer");
-    restartBtn->setStyleSheet("background-color: #339DFF; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
+    restartBtn->setStyleSheet("background-color: #339DFF; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     restartBtn->setMinimumHeight(50);
     btnLayout->addWidget(restartBtn);
 
@@ -406,12 +408,12 @@ void FittsView::initWindows() {
     quitParent->addLayout(quitLayout);
 
     quitButton = new QPushButton("Quitter");
-    quitButton->setStyleSheet("background-color: #B22222; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
+    quitButton->setStyleSheet("background-color: #B22222; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     quitButton->setMinimumHeight(50);
     quitLayout->addWidget(quitButton);
 
     escapeButton = new QPushButton("Annuler");
-    escapeButton->setStyleSheet("background-color: gray; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
+    escapeButton->setStyleSheet("background-color: gray; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;");
     escapeButton->setMinimumHeight(50);
     quitLayout->addWidget(escapeButton);
 }
