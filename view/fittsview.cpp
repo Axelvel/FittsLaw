@@ -133,25 +133,27 @@ void FittsView::initWindows() {
 
 
     minSize = new QSpinBox;
-    minSize->setMaximum(1000);
+    minSize->setMinimum(5);
+    minSize->setMaximum(300);
     minSize->setValue(this->fittsModel->minSize);
     configLayout->addWidget(minSize,2,1);
 
     //Slider 2 minSize
     minSizeSlider = new QSlider(Qt::Horizontal);
-    minSizeSlider->setRange(0,1000);
+    minSizeSlider->setRange(5,300);
     minSizeSlider->setValue(10);
     nbCibleSlider->setMinimumWidth(200);
     configLayout->addWidget(minSizeSlider, 2, 2);
 
     maxSize = new QSpinBox;
-    maxSize->setMaximum(1000);
+    maxSize->setMinimum(5);
+    maxSize->setMaximum(300);
     maxSize->setValue(this->fittsModel->maxSize);
     configLayout->addWidget(maxSize,3,1);
 
     //Slider 3 maxSize
     maxSizeSlider = new QSlider(Qt::Horizontal);
-    maxSizeSlider->setRange(0,1000);
+    maxSizeSlider->setRange(5,300);
     maxSizeSlider->setValue(150);
     maxSizeSlider->setMinimumWidth(200);
     configLayout->addWidget(maxSizeSlider, 3, 2);
@@ -256,9 +258,10 @@ void FittsView::initWindows() {
     resultLayout->addWidget(tabWidget);
 
     QWidget * graph1 = new QWidget;
-    //graph1->setMinimumSize(QSize(1000,700));
+    graph1->setFont(QFont("Arial", 20));
 
     QWidget * graph2 = new QWidget;
+    graph2->setFont(QFont("Arial", 20));
 
     QVBoxLayout * graph1Layout = new QVBoxLayout(graph1);
     QVBoxLayout * graph2Layout = new QVBoxLayout(graph2);
@@ -299,11 +302,10 @@ void FittsView::initWindows() {
     //Rappel box
 
     QGroupBox *rappelBox = new QGroupBox("Rappel :");
+    //rappelBox->setFont(QFont("Arial", 50));
 
     //settingsLayout->addWidget(rappelBox);
     QHBoxLayout *rappelLayout = new QHBoxLayout(rappelBox);
-
-    rappelBox->setStyleSheet("font-size: 15px");
 
     QVBoxLayout *rappelLeftLayout = new QVBoxLayout();
     rappelLayout->addLayout(rappelLeftLayout,2);
@@ -436,7 +438,7 @@ void FittsView::initWindows() {
 
 void FittsView::updateTestMsg() {
     this->testLabel->setText("<strong>Le test commencera après avoir appuyé sur la cible <font color='#339DFF'>bleue</font>.</strong> Nombre de cibles restantes : " + QString::number(this->fittsModel->cibleLeft));
-    this->testLabel->setStyleSheet("font-size: 15px");
+    this->testLabel->setFont(QFont("Arial", 18));
 }
 
 
