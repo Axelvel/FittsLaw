@@ -75,6 +75,20 @@ void FittsView::initWindows() {
     settingsLayout->addWidget(label);
 
 
+    QHBoxLayout * firstLayout = new QHBoxLayout;
+    settingsLayout->addLayout(firstLayout);
+
+    QLabel * explicationsLabel = new QLabel("Ce programme a pour but de vérifier la loi de Fitts, un modèle du mouvement humain, indicatif de la difficulté d'une tâche. Vous allez devoir passer un petit test. À la fin, nous comparerons vos résultats avec une approximation généré par le modèle.");
+    explicationsLabel->setFont(QFont("Arial", 15));
+    explicationsLabel->setMaximumWidth(300);
+    explicationsLabel->setWordWrap(true);
+    //settingsLayout->addWidget(explicationsLabel);
+    firstLayout->addWidget(explicationsLabel);
+
+
+
+
+
 
 
 
@@ -82,7 +96,8 @@ void FittsView::initWindows() {
 
 
     QGroupBox *configBox = new QGroupBox("Configuration du test :");
-    settingsLayout->addWidget(configBox);
+    //settingsLayout->addWidget(configBox);
+    firstLayout->addWidget(configBox);
     QGridLayout *configLayout = new QGridLayout(configBox);
 
     configBox->setStyleSheet("font-size: 15px"); //
