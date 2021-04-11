@@ -402,6 +402,7 @@ void FittsView::initWindows() {
     QVBoxLayout *quitParent = new QVBoxLayout(quitWindow);
 
     quitLabel = new QLabel("Ceci fermera l'application, êtes vous sûr de vouloir quitter l'application ?");
+    quitLabel->setFont(QFont("Arial", 15));
     quitParent->addWidget(quitLabel);
 
     QHBoxLayout *quitLayout = new QHBoxLayout();
