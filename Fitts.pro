@@ -37,6 +37,11 @@ HEADERS += \
     Model/fittsmodel.h \
     View/graphicwidget.h
 
+INCLUDEPATH +=  \
+    ./model \
+    ./view \
+    ./controller \
+
 RESOURCES = ressources.qrc
 
 # Default rules for deployment.
@@ -44,18 +49,4 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-INCLUDEPATH +=  \
-    ./model \
-    ./view \
-    ./controller \
 
-#INCLUDEPATH += $$PWD\FittsLaw\view\
-#INCLUDEPATH += $$PWD\FittsLaw\model\fittsmodel.h
-#INCLUDEPATH += $$PWD\FittsLaw\controller\
-
-
-#INCLUDEPATH += \
- #   ..\View \
- #   ..\Model \
-#INCLUDEPATH += -I "..\Model"
-#INCLUDEPATH += "..\View"
