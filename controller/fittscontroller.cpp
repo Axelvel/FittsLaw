@@ -82,7 +82,7 @@ void FittsController::aSliderChanged(int value) {
 }
 
 
-//b value
+// b value
 void FittsController::bValueChanged(double value) {
     this->fittsModel->b = value;
     value *= 100;
@@ -113,14 +113,14 @@ void FittsController::nbSliderChanged(int value) {
 
 void FittsController::minSizeChanged(int value) {
     this->fittsModel->minSize = value;
-    this->fittsView->minSizeSlider->setValue(value);
+    this->fittsView->minSizeSlider->setValue(value); //Changes value of Slider
 }
 
 void FittsController::minSliderChanged(int value) {
     this->fittsModel->minSize = value;
     this->fittsView->minSize->setValue(value); //Changes value of SpinBox
 
-    if (this->fittsView->minSizeSlider->value() > this->fittsView->maxSizeSlider->value()) {
+    if (this->fittsView->minSizeSlider->value() > this->fittsView->maxSizeSlider->value()) { //Makes sure min < max
         this->fittsView->maxSizeSlider->setValue(value);
     }
 }
@@ -135,7 +135,7 @@ void FittsController::maxSliderChanged(int value) {
     this->fittsModel->maxSize = value;
     this->fittsView->maxSize->setValue(value); //Changes value of SpinBox
 
-    if (this->fittsView->minSizeSlider->value() > this->fittsView->maxSizeSlider->value()) {
+    if (this->fittsView->minSizeSlider->value() > this->fittsView->maxSizeSlider->value()) { //Makes sure max > min
         this->fittsView->minSizeSlider->setValue(value);
     }
 
@@ -310,43 +310,47 @@ void FittsController::calculateSecondResult(){
     this->fittsView->graphicResult->setChart(chart);
     this->fittsView->graphicResult->setRenderHint(QPainter::Antialiasing);
 
-    chart->setTitle("Résultats log 2D/L");
+    chart->setTitle("Temps d'execution (T) en fonction de log(2D/L)");
     chart->setAnimationOptions(QChart::AllAnimations);
     chart->createDefaultAxes();
     chart->legend()->setVisible(true);
     chart->legend()->setAlignment(Qt::AlignBottom);
 
-    QLineSeries *expSeries = new QLineSeries;
-    expSeries->setName("Courbe expérimentale");
-    QLineSeries *fittsSeries = new QLineSeries;
-    fittsSeries->setName("Courbe théorique");
-    QCategoryAxis *axis = new QCategoryAxis;
+
+    QLineSeries *lineSeries = new QLineSeries;
+    lineSeries->setName("Modèle obtenu à partir des données expérimentales");
 
     QList<double> fittsValues;
 
+    double moyenne = 0.0;
+
+
     for(int i = 0; i < this->fittsModel->nbCible; ++i) {
         double T = this->fittsModel->times[i];
-        expSeries->append(i,T);
         double D = sqrt(pow(this->fittsModel->clickPoints[i].x() - this->fittsModel->cercleCenter[i].x(),2) + pow(this->fittsModel->clickPoints[i].y() - this->fittsModel->cercleCenter[i].y(),2));
 
-        // On multiplie par 100 pour être en ms
         double value = log((2*D / this->fittsModel->cercleSize[i]));
         fittsValues.append(value);
-        fittsSeries->append(i,value);
 
-        axis->append(QString::number(i + 1) + "<br />T: "+QString::number(T)+"<br />D: " + QString::number(D),i);
+        moyenne += (T / value);
     }
-    axis->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
 
-    chart->addSeries(expSeries);
-    chart->addSeries(fittsSeries);
 
-    chart->setAxisX(axis,expSeries);
-    chart->setAxisX(axis,fittsSeries);
+    moyenne = moyenne / this->fittsModel->nbCible;
+
+    lineSeries->append(0,0);
+    lineSeries->append(20, moyenne * 20); //Creation de la droite
+
+    chart->addSeries(lineSeries);
+
+    QValueAxis *axisX = new QValueAxis;
+    axisX->setTitleText("log(2D/L) ");
+    chart->setAxisX(axisX, lineSeries);
 
     QValueAxis *axisY = new QValueAxis;
     axisY->setTitleText("temps (en ms)");
-    chart->setAxisY(axisY,expSeries);
+    chart->setAxisY(axisY,lineSeries);
+
 
 
 
