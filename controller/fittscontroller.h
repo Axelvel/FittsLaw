@@ -45,7 +45,7 @@ private slots:
     //Sliders
     void aSliderChanged(int value);
     void bSliderChanged(int value);
-    void nbSliderChanged(int value); //
+    void nbSliderChanged(int value);
     void minSliderChanged(int value);
     void maxSliderChanged(int value);
 

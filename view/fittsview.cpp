@@ -166,23 +166,13 @@ void FittsView::initWindows() {
 
     leaveBtn = new QPushButton("Quitter");
     leaveBtn->setStyleSheet("QPushButton { background-color: #B22222; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
-    //leaveBtn->setMinimumHeight(50);
     btnLayout->addWidget(leaveBtn);
 
 
 
     startBtn = new QPushButton("Démarrer");
-    //startBtn->setMinimumHeight(50); //
     startBtn->setStyleSheet("QPushButton { background-color: #339DFF; color: white; min-height: 50px; font-size: 25px; font-weight: bold; margin: 5px; border-radius: 25px;}");
-
-/*
-    QPalette palette = startBtn->palette();
-    palette.setColor(QPalette::Background, QColor("#339DFF"));
-    startBtn->setPalette(palette);
-*/
     btnLayout->addWidget(startBtn);
-
-
 
 
 
@@ -227,12 +217,6 @@ void FittsView::initWindows() {
     resultBtn->setMinimumHeight(50); //
     btnLayout->addWidget(resultBtn);
     resultBtn->setEnabled(false);
-
-
-
-
-
-
 
 
 
@@ -357,13 +341,13 @@ void FittsView::initWindows() {
 
     //Graph 1 Tab
     plot = new QChartView;
-    graph1Layout->addWidget(plot); //TODO:Change name of graph1
+    graph1Layout->addWidget(plot);
     graph1Layout->addWidget(resultBox);
     graph1Layout->addWidget(rappelBox);
 
     //Graph2 Tab
     graphicResult = new QChartView;
-    graph2Layout->addWidget(graphicResult); //TODO: Change name of graph2
+    graph2Layout->addWidget(graphicResult);
 
     QGroupBox *secondRBox = new QGroupBox("Statistiques");
     graph2Layout->addWidget(secondRBox);
